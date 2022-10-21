@@ -1,5 +1,3 @@
-
-
 function loco(){
     gsap.registerPlugin(ScrollTrigger);
 
@@ -294,15 +292,6 @@ gsap.to("#page9-layer",{
      ease:"Expo.easeInOut",
 })
 
-
-var cursor=document.querySelector("#cursor")
-var bgs=document.querySelector("#bgs")
-
-document.addEventListener("mousemove",function(dets){
-  cursor.style.left = `${dets.x - 20}px`;
-  cursor.style.top = `${dets.y-20}px`;
-})
-
 gsap.to("#page9-move-top",{
   scrollTrigger:{
     trigger:"#page9",
@@ -336,6 +325,11 @@ gsap.to("#page9-bottom-left h1",{
   },
   y:-27
 })
+
+
+var circle=document.querySelector("#circle");
+var flag=0;
+
 circle.addEventListener("click",function(){
     if(flag===0){
         circle.style.transform =`translateX(44px)`;
@@ -354,3 +348,16 @@ circle.addEventListener("click",function(){
         flag=0;
     }
 })
+
+var cursor=document.querySelector("#cursor")
+var bgs = document.querySelector("#bgs")
+
+window.addEventListener('mousemove', (e) => {
+  cursor.style.left = e.pageX + `px`;
+  cursor.style.top = e.pageY + `px`;
+  cursor.setAttribute('data-fromTop', (cursor.offsetTop - scrollY))
+});
+window.addEventListener('scroll', () => {
+  const fromTop = parseInt(cursor.getAttribute('data-fromTop'));
+  cursor.style.top = scrollY + fromTop + 'px';
+});
