@@ -336,3 +336,21 @@ gsap.to("#page9-bottom-left h1",{
   },
   y:-27
 })
+circle.addEventListener("click",function(){
+    if(flag===0){
+        circle.style.transform =`translateX(44px)`;
+        circle.style.transition="all ease .5s";
+        document.documentElement.style.setProperty('--black', 'white');
+        document.documentElement.style.setProperty('--white', 'black');
+        document.documentElement.style.setProperty('--thr', 'blue');
+       
+        flag=1;
+    }
+    else{
+        circle.style.transform =`translateX(0px)`;
+        circle.style.transition="all ease .5s";
+        document.documentElement.style.setProperty('--black', 'black');
+        document.documentElement.style.setProperty('--white', 'white');
+        flag=0;
+    }
+})
